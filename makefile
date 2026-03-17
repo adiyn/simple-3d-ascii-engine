@@ -14,4 +14,4 @@ math_utils.o: src/math_utils.c
 main.o: main.c
 	$(CC) -c main.c $(CFLAGS)
 clean:
-	rm -f *.o cube
+	rm -f *.o

@@ -9,7 +9,8 @@
 #include <windows.h>
 #endif
 
-Canvas initCanvas() {
+Canvas initCanvas()
+{
     Canvas canvas;
     canvas.size = (int)SCREEN_WIDTH * (int)SCREEN_HEIGHT;
     canvas.grid = (char**)malloc(SCREEN_HEIGHT * sizeof(char*));
@@ -28,25 +29,30 @@ Canvas initCanvas() {
     return canvas;
 }
 
-bool isRenderable(Surface surface, double x, double y) {
+bool isRenderable(Surface surface, double x, double y)
+{
     Point3D p = surface.points[(int)x][(int)y];
     return !(p.vectPnt.x == -1 && p.vectPnt.y == -1 && p.vectPnt.z == -1);
 }
 
-bool doesRayIntersectSurface(Ray ray, Surface surface) {
+bool doesRayIntersectSurface(Ray ray, Surface surface)
+{
     return false; // TODO
 }
 
-RaycastResult raycast(Ray ray, Surface surface, Cube cube, Camera camera) {
+RaycastResult raycast(Ray ray, Surface surface, Cube cube, Camera camera)
+{
     RaycastResult result = {false, {{0, 0, 0}, 0.0}, surface};
     return result; // TODO
 }
 
-void RenderWithLighting(Canvas canvas, Cube cube, Camera camera, LightSource light) {
+void RenderWithLighting(Canvas canvas, Cube cube, Camera camera, LightSource light)
+{
     // TODO
 }
 
-void emptyCanvas(Canvas canvas) {
+void emptyCanvas(Canvas canvas)
+{
     for (int i=0; i<SCREEN_HEIGHT; i++) {
         for (int j=0; j<SCREEN_WIDTH; j++) {
             canvas.grid[i][j] = ' ';
@@ -55,7 +61,8 @@ void emptyCanvas(Canvas canvas) {
     }
 }
 
-void RenderNaked(Canvas canvas, Cube cube, Camera camera) {
+void RenderNaked(Canvas canvas, Cube cube, Camera camera)
+{
     int frame = 0;
     while (1) {
         emptyCanvas(canvas);
@@ -95,19 +102,20 @@ void RenderNaked(Canvas canvas, Cube cube, Camera camera) {
         }
 
         #ifdef __linux__
-            system("clear");
-            usleep(1000); // 100ms (100000 us)
+            printf("\033[2J\033[1;1H");
+            usleep(1000); // 1ms (1000 us)
         #endif
         #ifdef _WIN32
             system("cls");
-            Sleep(1); // 100ms
+            Sleep(1); // 1000ms
         #endif
 
-        rotateCube(&cube, 0.05);
+        rotateCube(&cube, 0.01);
     }
 }
 
-void freeCanvas(Canvas canvas) { // thanos snap
+void freeCanvas(Canvas canvas)
+{
     for (int i = 0; i < SCREEN_HEIGHT; i++) {
         free(canvas.grid[i]);
         free(canvas.points[i]);
@@ -118,7 +126,7 @@ void freeCanvas(Canvas canvas) { // thanos snap
     free(canvas.zbuffer);
 }
 
-void freeAll(Canvas canvas, Cube cube) {
+void freeAll(Canvas canvas, Cube cube) { // thanos snap
     freeCanvas(canvas);
     freeCube(cube);
 }

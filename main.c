@@ -3,10 +3,11 @@
 #include "src/renderer.h"
 #include "src/math_utils.h"
 
-int main() {
+int main()
+{
     Canvas canvas = initCanvas();
     Cube cube = initCube(0, 0, 0);
-    Camera camera = {{0, 0, -35}};
+    Camera camera = {{0, -5, -60}};
 
     while (1) {
         RenderNaked(canvas, cube, camera);

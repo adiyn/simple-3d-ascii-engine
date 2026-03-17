@@ -9,9 +9,15 @@ typedef struct Surface {
 
 typedef struct Cube {
     Point3D center;
-    int size;
     Surface *surfaces;
+    int size;
 } Cube;
+
+typedef struct Triangle {
+    Point3D center;
+    Surface *surface;
+    int height;
+} Triangle;
 
 Surface initSurface();
 Cube initCube(double x, double y, double z);

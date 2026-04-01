@@ -2,7 +2,6 @@
 #define MATH_UTILS_H
 
 #include "constants.h"
-#include <stdbool.h>
 
 typedef struct Vector2D {
     double x; double y;

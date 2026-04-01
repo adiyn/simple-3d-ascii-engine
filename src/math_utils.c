@@ -1,5 +1,4 @@
 #include "math_utils.h"
-#include <stdlib.h>
 
 Vector2D setVector2D(double x, double y) {
     Vector2D v2D = {x, y};

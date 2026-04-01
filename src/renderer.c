@@ -2,9 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef __linux__
-#include <unistd.h>
-#endif
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -61,6 +58,10 @@ void emptyCanvas(Canvas canvas)
     }
 }
 
+void clearScreen() {
+    fputs("\x1b[2J\x1b[H", stdout);
+}
+
 void RenderNaked(Canvas canvas, Cube cube, Camera camera)
 {
     int frame = 0;
@@ -101,13 +102,11 @@ void RenderNaked(Canvas canvas, Cube cube, Camera camera)
             putchar('\n');
         }
 
-        #ifdef __linux__
-            printf("\033[2J\033[1;1H");
-            usleep(1000); // 1ms (1000 us)
-        #endif
         #ifdef _WIN32
-            system("cls");
-            Sleep(1); // 1000ms
+        clearScreen();
+        #endif
+        #ifdef __linux__
+        printf("\033[2J\033[H");
         #endif
 
         rotateCube(&cube, 0.01);

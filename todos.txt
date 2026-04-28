@@ -1,0 +1,2 @@
+fix : fork() for camera movement n shit
+do : forgor

@@ -7,7 +7,7 @@
 #include <signal.h>
 #include <stdbool.h>
 #include <stdlib.h>
-
+#include <string.h>
 #define M_PI 3.14159265358979323846
 #define SIDES 6.0
 #define WIDTH_FIX 2.0
@@ -22,4 +22,11 @@
 #define EMPTY_VECT3D -1, -1, -1
 #define EMPTY_VECT2D -1, -1
 
+#ifdef __linux__
+    #include <unistd.h>
 #endif
+#ifdef __WIN32
+    #include <windows.h>
+#endif
+#endif
+

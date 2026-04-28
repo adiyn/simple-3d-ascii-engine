@@ -8,13 +8,13 @@ int main()
     pid_t child_pid = fork();
     char userinput[1024];
     
-    for (;;) {
+    /*for (;;) {
         fgets(userinput, sizeof(userinput), stdin);
         if (strcmp(userinput, "stop\n") == 0) {
             kill(child_pid, SIGSTOP);
             break;
         }
-    }
+    }*/
 
     Canvas canvas = initCanvas();
     Cube cube = initCube(0, 0, 0);

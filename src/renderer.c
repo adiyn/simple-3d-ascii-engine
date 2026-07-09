@@ -1,6 +1,7 @@
 #include "renderer.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -59,7 +60,8 @@ void emptyCanvas(Canvas canvas)
 }
 
 void clearScreen() {
-    fputs("\x1b[2J\x1b[H", stdout);
+    const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
+    write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
 }
 
 void RenderNaked(Canvas canvas, Cube cube, Camera camera)

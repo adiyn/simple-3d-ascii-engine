@@ -1,0 +1,9 @@
+# Ignore editor and IDE files
+.vscode/
+*.code-workspace
+*.swp
+*.swo
+.*.swp
+*~
+# Vim backup files
+*.vim

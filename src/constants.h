@@ -8,7 +8,8 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#define M_PI 3.14159265358979323846
+#include <SDL/SDL.h>
+
 #define SIDES 6.0
 #define WIDTH_FIX 2.0
 #define SCREEN_WIDTH 120.0

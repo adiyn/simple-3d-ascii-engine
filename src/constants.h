@@ -8,13 +8,13 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 
 #define SIDES 6.0
 #define WIDTH_FIX 2.0
 #define SCREEN_WIDTH 120.0
 #define SCREEN_HEIGHT 60.0
-#define FACE_SIZE 40.0
+#define FACE_SIZE 30.0
 #define FOV_ANGLE 120.0
 #define FOCAL_LENGTH ((SCREEN_WIDTH / 2) / tan((FOV_ANGLE / 2) * (M_PI / 180.0)))
 

@@ -59,11 +59,6 @@ void emptyCanvas(Canvas canvas)
     }
 }
 
-void clearScreen() {
-    const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
-    write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
-}
-
 void RenderNaked(Canvas canvas, Cube cube, Camera camera)
 {
     int frame = 0;
@@ -97,6 +92,8 @@ void RenderNaked(Canvas canvas, Cube cube, Camera camera)
 
         printf("frame number : %d\n", frame++); // frame counter
 
+        usleep(200);
+
         for (int y = 0; y < SCREEN_HEIGHT; y++) {
             for (int x = 0; x < SCREEN_WIDTH; x++) {
                 putchar(canvas.grid[y][x]);
@@ -104,14 +101,14 @@ void RenderNaked(Canvas canvas, Cube cube, Camera camera)
             putchar('\n');
         }
 
+        rotateCube(&cube, 0.01);
+        
         #ifdef _WIN32
-        clearScreen();
+        system("cls");
         #endif
         #ifdef __linux__
-        printf("\033[2J\033[H");
+        system("clear");
         #endif
-
-        rotateCube(&cube, 0.01);
     }
 }
 

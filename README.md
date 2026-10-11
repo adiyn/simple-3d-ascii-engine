@@ -15,7 +15,7 @@ A minimal 3D terminal graphics engine written in pure C. It projects and rasteri
 **Requirements:** Any standard C compiler (`gcc`, `clang`) and `make`.
 
 ```bash
-git clone [https://github.com/adiyn/simple-3d-ascii-engine.git](https://github.com/adiyn/simple-3d-ascii-engine.git)
+git clone https://github.com/adiyn/simple-3d-ascii-engine
 cd simple-3d-ascii-engine
 
 make
